@@ -11,7 +11,7 @@
     padding: 0;
     font-family: 'Arial', sans-serif;
     overflow: hidden;
-    background: linear-gradient(to bottom, #ffe6e6, #ffcccc);
+    background: linear-gradient(to bottom, #ffdde1, #ffb6c1); /* fundal roz romantic */
     height: 100vh;
   }
 
@@ -23,10 +23,10 @@
   }
 
   h1 {
-    font-size: 2em;
+    font-size: 2.2em;
     margin-bottom: 25px;
     color: #ff4d6d;
-    text-shadow: 1px 1px 2px #00000033;
+    text-shadow: 2px 2px 4px #00000033;
   }
 
   button {
@@ -34,17 +34,18 @@
     font-size: 1.2em;
     cursor: pointer;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     background: #ff4d6d;
     color: white;
+    margin: 0 10px;
     transition: transform 0.2s;
+    position: relative;
   }
 
   button:hover {
     transform: scale(1.1);
   }
 
-  /* inimioare fundal */
   .heart-float {
     position: absolute;
     font-size: 20px;
@@ -59,7 +60,6 @@
     100% {transform: translateY(-900px) scale(1.5);}
   }
 
-  /* confetti */
   .confetti {
     position: absolute;
     width: 10px;
@@ -78,78 +78,85 @@
 <body>
 
 <div id="container">
-  <h1>La mulți ani de V-Day! ❤️</h1>
+  <h1>Dragă Bambi, La mulți ani de V-Day! ❤️</h1>
   <button id="daButton">DA</button>
+  <button id="nuButton">NU</button>
 </div>
 
-<!-- Muzică gratuită de exemplu -->
+<!-- Muzică royalty‑free inclusă în GitHub -->
 <audio id="music" loop>
-  <source src= type="audio/mpeg">
+  <source src="stray-romantic.mp3" type="audio/mpeg">
   Browserul tău nu suportă audio.
 </audio>
 
 <script>
-  const container = document.getElementById('container');
-  const daButton = document.getElementById('daButton');
-  const music = document.getElementById('music');
+const container = document.getElementById('container');
+const daButton = document.getElementById('daButton');
+const nuButton = document.getElementById('nuButton');
+const music = document.getElementById('music');
 
-  // inimioare fundal continuu
-  function createBackgroundHeart() {
-    const heart = document.createElement('div');
-    heart.textContent = '❤️';
-    heart.className = 'heart-float';
-    heart.style.left = Math.random() * window.innerWidth + 'px';
-    heart.style.top = window.innerHeight + 'px';
-    heart.style.animationDuration = (6 + Math.random() * 4) + 's';
-    heart.style.fontSize = (16 + Math.random() * 24) + 'px';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 10000);
+// inimioare fundal continuu
+function createBackgroundHeart() {
+  const heart = document.createElement('div');
+  heart.textContent = '❤️';
+  heart.className = 'heart-float';
+  heart.style.left = Math.random() * window.innerWidth + 'px';
+  heart.style.top = window.innerHeight + 'px';
+  heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+  heart.style.fontSize = (16 + Math.random() * 24) + 'px';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 10000);
+}
+setInterval(createBackgroundHeart, 400);
+
+// confetti funcție
+function createConfetti() {
+  for (let i = 0; i < 60; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random() * window.innerWidth + 'px';
+    c.style.backgroundColor = hsl(${Math.random()*360}, 100%, 50%);
+    c.style.animationDuration = (2 + Math.random() * 2) + 's';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3000);
   }
+}
 
-  setInterval(createBackgroundHeart, 400);
+// inimioare la click
+function clickHeart(x, y) {
+  const heart = document.createElement('div');
+  heart.textContent = '❤️';
+  heart.className = 'heart-float';
+  heart.style.left = x + 'px';
+  heart.style.top = y + 'px';
+  heart.style.animationDuration = '2s';
+  heart.style.fontSize = '28px';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 2000);
+}
 
-  // confetti funcție
-  function createConfetti() {
-    for (let i = 0; i < 60; i++) {
-      const c = document.createElement('div');
-      c.className = 'confetti';
-      c.style.left = Math.random() * window.innerWidth + 'px';
-      c.style.backgroundColor = hsl(${Math.random()*360}, 100%, 50%);
-      c.style.animationDuration = (2 + Math.random() * 2) + 's';
-      document.body.appendChild(c);
-      setTimeout(() => c.remove(), 3000);
-    }
+daButton.addEventListener('click', () => {
+  music.play().catch(() => console.log("Trebuie click pe buton pentru muzică"));
+  createConfetti();
+  container.querySelector('h1').innerHTML = "Mă bucur că ai spus DA 💖<br>Te iubesc enorm de mult, Bambi ❤️";
+  daButton.style.display = 'none';
+  nuButton.style.display = 'none';
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target.id !== 'daButton' && e.target.id !== 'nuButton') {
+    clickHeart(e.clientX, e.clientY);
   }
+});
 
-  // inimioare la click
-  function clickHeart(x, y) {
-    const heart = document.createElement('div');
-    heart.textContent = '❤️';
-    heart.className = 'heart-float';
-    heart.style.left = x + 'px';
-    heart.style.top = y + 'px';
-    heart.style.animationDuration = '2s';
-    heart.style.fontSize = '28px';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 2000);
-  }
-
-  daButton.addEventListener('click', () => {
-    // Pornim muzica la click
-    music.play().catch(() => console.log("Trebuie click pe buton pentru muzică"));
-
-    createConfetti();
-
-    container.querySelector('h1').innerHTML = "Mă bucur că ai spus DA 💖<br>Te iubesc enorm de mult, Bambi ❤️";
-    daButton.style.display = 'none';
-  });
-
-  // inimioare la click oriunde
-  document.addEventListener('click', (e) => {
-    if (e.target.id !== 'daButton') {
-      clickHeart(e.clientX, e.clientY);
-    }
-  });
+// „NU” fuge când cursorul se apropie
+nuButton.addEventListener('mouseenter', () => {
+  const maxX = window.innerWidth - nuButton.offsetWidth;
+  const maxY = window.innerHeight - nuButton.offsetHeight;
+  nuButton.style.position = 'absolute';
+  nuButton.style.left = Math.random() * maxX + 'px';
+  nuButton.style.top = Math.random() * maxY + 'px';
+});
 </script>
 
 </body>
