@@ -47,4 +47,27 @@ noBtn.addEventListener("click", moveNo);
 yesBtn.addEventListener("click", function () {
   container.style.display = "none";
   success.classList.remove("hidden");
+}
+
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+
+const texts = [
+  "Ești sigură? 🥺",
+  "Hai măcar încearcă 💔",
+  "Gândește-te puțin 😏",
+  "Nu te las 😈",
+  "Ultima șansă 😭",
+  "Ok… poate DA? 💖"
+];
+
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  const randomText = texts[Math.floor(Math.random() * texts.length)];
+  message.textContent = randomText;
 });
