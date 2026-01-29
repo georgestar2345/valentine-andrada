@@ -1,0 +1,55 @@
+body {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  height: 100vh;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+.question {
+  font-size: 1.8em;
+}
+
+.buttons {
+  margin-top: 30px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#yes {
+  background: #4CAF50;
+  color: white;
+}
+
+#no {
+  background: #f44336;
+  color: white;
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}
+
+#success {
+  text-align: center;
+}
