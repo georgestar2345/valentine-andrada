@@ -16,7 +16,7 @@ playBtn.addEventListener("click", function () {
 function createHeart() {
   var heart = document.createElement("div");
   heart.className = "heart";
-  heart.innerHTML = "&hearts;";
+  heart.innerText = "H"; // simplu, simbol temporar
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.animationDuration = (3 + Math.random() * 3) + "s";
   document.body.appendChild(heart);
