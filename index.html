@@ -21,14 +21,26 @@
   <p>Te iubesc enorm ❤️</p>
 </div>
 
+<button id="playMusic">Pornește muzica 🎶</button>
+
 <iframe
+  id="music"
   width="0"
   height="0"
-  src="https://www.youtube.com/embed/E8i32NXMxnc?autoplay=1&loop=1&playlist=E8i32NXMxnc"
+  src=""
   frameborder="0"
   allow="autoplay">
 </iframe>
 
 <script src="script.js"></script>
+<script>
+  const btn = document.getElementById("playMusic");
+  const iframe = document.getElementById("music");
+
+  btn.addEventListener("click", () => {
+    iframe.src = "https://www.youtube.com/embed/E8i32NXMxnc?autoplay=1&loop=1&playlist=E8i32NXMxnc";
+    btn.style.display = "none";
+  });
+</script>
 </body>
 </html>
