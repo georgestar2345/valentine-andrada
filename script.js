@@ -2,81 +2,41 @@ const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const container = document.querySelector(".container");
 const success = document.getElementById("success");
+const playBtn = document.getElementById("playMusic");
+const iframe = document.getElementById("music");
 
-/* =====================
-   INIMIOARE CARE CAD
-===================== */
+/* MUZICĂ */
+playBtn.addEventListener("click", () => {
+  iframe.src =
+    "https://www.youtube.com/embed/E8i32NXMxnc?autoplay=1&playsinline=1&loop=1&playlist=E8i32NXMxnc";
+  playBtn.style.display = "none";
+});
+
+/* INIMIOARE */
 function createHeart() {
   const heart = document.createElement("div");
-  heart.classList.add("heart");
+  heart.className = "heart";
   heart.innerText = "❤️";
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.animationDuration = 3 + Math.random() * 3 + "s";
   document.body.appendChild(heart);
-
   setTimeout(() => heart.remove(), 6000);
 }
+setInterval(createHeart, 400);
 
-setInterval(createHeart, 300);
+/* BUTON NU */
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
 
-/* =====================
-   BUTONUL NU CARE FUGE
-===================== */
-let scale = 1;
-let messages = [
-  "Sigur nu? 🥺",
-  "Gândește-te 😏",
-  "Hai că știu că vrei 💕",
-  "NU prea merge 😂",
-  "Ultima șansă 😈"
-];
-let msgIndex = 0;
-
-function moveNoButton() {
-  const containerRect = container.getBoundingClientRect();
-
-  const maxX = containerRect.width - noBtn.offsetWidth;
-  const maxY = containerRect.height - noBtn.offsetHeight;
-
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-
-  scale -= 0.07;
-  if (scale < 0.4) scale = 0.4;
-  noBtn.style.transform = scale(${scale});
-
-  noBtn.innerText = messages[msgIndex % messages.length];
-  msgIndex++;
+function moveNo() {
+  const maxX = container.clientWidth - noBtn.offsetWidth;
+  const maxY = container.clientHeight - noBtn.offsetHeight;
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
 }
 
-noBtn.addEventListener("mouseenter", moveNoButton);
-noBtn.addEventListener("touchstart", moveNoButton);
-
-/* =====================
-   CONFETTI LA DA
-===================== */
-function confettiBoom() {
-  for (let i = 0; i < 120; i++) {
-    const confetti = document.createElement("div");
-    confetti.style.position = "fixed";
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.top = "-10px";
-    confetti.style.width = "8px";
-    confetti.style.height = "12px";
-    confetti.style.backgroundColor =
-      ["#ff4d6d", "#ffd166", "#06d6a0", "#4cc9f0"][Math.floor(Math.random() * 4)];
-    confetti.style.animation = "fall 2.5s linear forwards";
-    document.body.appendChild(confetti);
-
-    setTimeout(() => confetti.remove(), 3000);
-  }
-}
-
+/* DA */
 yesBtn.addEventListener("click", () => {
   container.style.display = "none";
   success.classList.remove("hidden");
-  confettiBoom();
 });
