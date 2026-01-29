@@ -47,7 +47,7 @@ noBtn.addEventListener("click", moveNo);
 yesBtn.addEventListener("click", function () {
   container.style.display = "none";
   success.classList.remove("hidden");
-}
+});
 
 const noBtn = document.getElementById("noBtn");
 const message = document.getElementById("message");
