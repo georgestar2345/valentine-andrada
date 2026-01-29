@@ -3,6 +3,9 @@ const yesBtn = document.getElementById("yes");
 const container = document.querySelector(".container");
 const success = document.getElementById("success");
 
+/* =====================
+   INIMIOARE CARE CAD
+===================== */
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
@@ -16,10 +19,13 @@ function createHeart() {
 
 setInterval(createHeart, 300);
 
+/* =====================
+   BUTONUL NU CARE FUGE
+===================== */
 let scale = 1;
 let messages = [
   "Sigur nu? 🥺",
-  "Gândește-te mai bine 😏",
+  "Gândește-te 😏",
   "Hai că știu că vrei 💕",
   "NU prea merge 😂",
   "Ultima șansă 😈"
@@ -38,12 +44,10 @@ function moveNoButton() {
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 
-  // micșorare progresivă
   scale -= 0.07;
   if (scale < 0.4) scale = 0.4;
   noBtn.style.transform = scale(${scale});
 
-  // schimbă textul
   noBtn.innerText = messages[msgIndex % messages.length];
   msgIndex++;
 }
@@ -51,6 +55,9 @@ function moveNoButton() {
 noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
 
+/* =====================
+   CONFETTI LA DA
+===================== */
 function confettiBoom() {
   for (let i = 0; i < 120; i++) {
     const confetti = document.createElement("div");
