@@ -6,24 +6,24 @@
 <title>❤️ V-Day Surprise ❤️</title>
 
 <style>
-  body {
+  html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
     font-family: 'Arial', sans-serif;
     overflow: hidden;
     background: linear-gradient(to bottom, #ffdde1, #ffb6c1); /* fundal roz romantic */
-    height: 100vh;
   }
 
   #container {
     position: relative;
     z-index: 10;
     text-align: center;
-    top: 35vh;
+    top: 35%;
   }
 
   h1 {
-    font-size: 2.2em;
+    font-size: 2.5em;
     margin-bottom: 25px;
     color: #ff4d6d;
     text-shadow: 2px 2px 4px #00000033;
@@ -78,12 +78,12 @@
 <body>
 
 <div id="container">
-  <h1>Dragă Bambi, La mulți ani de V-Day! ❤️</h1>
+  <h1>Will you be my Valentine?</h1>
   <button id="daButton">DA</button>
   <button id="nuButton">NU</button>
 </div>
 
-<!-- Muzică royalty‑free inclusă în GitHub -->
+<!-- Muzică royalty-free, înlocuiește cu Stray Kids dacă vrei -->
 <audio id="music" loop>
   <source src="stray-romantic.mp3" type="audio/mpeg">
   Browserul tău nu suportă audio.
@@ -135,6 +135,7 @@ function clickHeart(x, y) {
   setTimeout(() => heart.remove(), 2000);
 }
 
+// DA button click
 daButton.addEventListener('click', () => {
   music.play().catch(() => console.log("Trebuie click pe buton pentru muzică"));
   createConfetti();
@@ -143,13 +144,14 @@ daButton.addEventListener('click', () => {
   nuButton.style.display = 'none';
 });
 
+// inimioare la click oriunde
 document.addEventListener('click', (e) => {
   if (e.target.id !== 'daButton' && e.target.id !== 'nuButton') {
     clickHeart(e.clientX, e.clientY);
   }
 });
 
-// „NU” fuge când cursorul se apropie
+// NU button fuge când cursorul se apropie
 nuButton.addEventListener('mouseenter', () => {
   const maxX = window.innerWidth - nuButton.offsetWidth;
   const maxY = window.innerHeight - nuButton.offsetHeight;
