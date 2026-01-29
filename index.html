@@ -34,7 +34,13 @@
   frameborder="0"
   allow="autoplay; encrypted-media"
 ></iframe>
-
+  
+<script>
+function playMusic() {
+  const iframe = document.getElementById("ytplayer");
+  iframe.src += "&autoplay=1&loop=1&playlist=ID_VIDEO";
+}
+</script>
 <script src="script.js"></script>
 </body>
 </html>
