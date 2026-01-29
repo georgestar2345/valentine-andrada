@@ -2,7 +2,7 @@ body {
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
   height: 100vh;
   margin: 0;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: Arial, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,25 +14,21 @@ body {
   text-align: center;
   position: relative;
   width: 90vw;
-  max-width:400px;
-  height: 300px;
-}
-
-h1 {
-  font-size: 3em;
+  max-width: 400px;
+  height: 320px;
 }
 
 .question {
-  font-size: 1.8em;
+  font-size: 1.6em;
 }
 
 .buttons {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 button {
-  padding: 15px 30px;
-  font-size: 1.2em;
+  padding: 14px 28px;
+  font-size: 1.1em;
   border: none;
   border-radius: 30px;
   cursor: pointer;
@@ -48,17 +44,19 @@ button {
   background: #f44336;
   color: white;
   position: absolute;
-  transition: transform 0,15 ease;
+}
+
+#playMusic {
+  background: #ff4d6d;
+  color: white;
+  margin-bottom: 15px;
 }
 
 .hidden {
   display: none;
 }
 
-#success {
-  text-align: center;
-}
-
+/* INIMIOARE */
 .heart {
   position: fixed;
   top: -10px;
