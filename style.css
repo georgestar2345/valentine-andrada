@@ -12,6 +12,7 @@ body {
 
 .container {
   text-align: center;
+  position: relative;
 }
 
 h1 {
