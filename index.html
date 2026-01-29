@@ -20,26 +20,40 @@
   <h2>Știam eu 😍💞</h2>
   <p>Te iubesc enorm ❤️</p>
 </div>
-
-<button id="playMusic">Pornește muzica 🎶</button>
+<button id="playMusic" style="
+  padding: 14px 26px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+">
+  ▶ Pornește muzica 🎶
+</button>
 
 <iframe
   id="music"
-  width="0"
-  height="0"
   src=""
+  width="1"
+  height="1"
+  style="opacity:0; position:absolute;"
   frameborder="0"
-  allow="autoplay">
-</iframe>
+  allow="autoplay; encrypted-media"
+  allowfullscreen
+></iframe>
 
-<script src="script.js"></script>
-<script>
+</script>
+  <script>
   const btn = document.getElementById("playMusic");
   const iframe = document.getElementById("music");
 
   btn.addEventListener("click", () => {
-    iframe.src = "https://www.youtube.com/embed/E8i32NXMxnc?autoplay=1&loop=1&playlist=E8i32NXMxnc";
-    btn.style.display = "none";
+    iframe.src =
+      "https://www.youtube.com/embed/E8i32NXMxnc?autoplay=1&playsinline=1&loop=1&playlist=E8i32NXMxnc";
+    btn.innerText = "🎶 Muzica pornește...";
+    setTimeout(() => btn.style.display = "none", 800);
   });
 </script>
 </body>
