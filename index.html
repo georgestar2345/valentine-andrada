@@ -11,7 +11,7 @@
     padding: 0;
     font-family: 'Arial', sans-serif;
     overflow: hidden;
-    background: #ffe6e6;
+    background: linear-gradient(to bottom, #ffe6e6, #ffcccc);
     height: 100vh;
   }
 
@@ -19,7 +19,7 @@
     position: relative;
     z-index: 10;
     text-align: center;
-    top: 40vh;
+    top: 35vh;
   }
 
   h1 {
@@ -78,11 +78,11 @@
 <body>
 
 <div id="container">
-  <h1>Vrei să fii fericit/ă? ❤️</h1>
+  <h1>La mulți ani de V-Day! ❤️</h1>
   <button id="daButton">DA</button>
 </div>
 
-<!-- Muzică (înlocuiește cu link legal Stray Kids) -->
+<!-- Muzică gratuită de exemplu -->
 <audio id="music" loop>
   <source src="https://www.youtube.com/watch?v=E8i32NXMxnc&list=RDE8i32NXMxnc&start_radio=1" type="audio/mpeg">
   Browserul tău nu suportă audio.
@@ -93,7 +93,7 @@
   const daButton = document.getElementById('daButton');
   const music = document.getElementById('music');
 
-  // inimioare care plutesc continuu
+  // inimioare fundal continuu
   function createBackgroundHeart() {
     const heart = document.createElement('div');
     heart.textContent = '❤️';
@@ -103,7 +103,6 @@
     heart.style.animationDuration = (6 + Math.random() * 4) + 's';
     heart.style.fontSize = (16 + Math.random() * 24) + 'px';
     document.body.appendChild(heart);
-
     setTimeout(() => heart.remove(), 10000);
   }
 
@@ -136,7 +135,8 @@
   }
 
   daButton.addEventListener('click', () => {
-    music.play().catch(() => {}); // compatibil iPhone
+    // Pornim muzica la click
+    music.play().catch(() => console.log("Trebuie click pe buton pentru muzică"));
 
     createConfetti();
 
