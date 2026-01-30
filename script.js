@@ -39,7 +39,30 @@ function moveNo() {
 }
 
 /* BUTON DA */
+function confettiBoom() {
+  var colors = ["#ff4d6d", "#ffd166", "#06d6a0", "#4cc9f0"];
+
+  for (var i = 0; i < 120; i++) {
+    var confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDuration =
+      (2 + Math.random() * 2) + "s";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(function () {
+      if (confetti.parentNode) {
+        confetti.parentNode.removeChild(confetti);
+      }
+    }, 3000);
+  }
+}
+
 yesBtn.onclick = function () {
   container.style.display = "none";
   success.classList.remove("hidden");
+  confettiBoom();
 };
