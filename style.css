@@ -1,11 +1,11 @@
 body {
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
-  height: 100vh;
   margin: 0;
-  font-family: Arial, sans-serif;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
   color: white;
   overflow: hidden;
 }
@@ -13,26 +13,25 @@ body {
 .container {
   text-align: center;
   position: relative;
-  width: 90vw;
-  max-width: 400px;
-  height: 320px;
+  width: 320px;
+  height: 260px;
 }
 
 .question {
-  font-size: 1.6em;
+  font-size: 20px;
 }
 
 .buttons {
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 button {
-  padding: 14px 28px;
-  font-size: 1.1em;
+  padding: 12px 24px;
+  font-size: 16px;
   border: none;
-  border-radius: 30px;
+  border-radius: 20px;
   cursor: pointer;
-  margin: 10px;
+  margin: 5px;
 }
 
 #yes {
