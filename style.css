@@ -70,3 +70,18 @@ button {
     opacity: 0;
   }
 }
+
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 12px;
+  top: -10px;
+  animation: confettiFall 2.5s linear forwards;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
