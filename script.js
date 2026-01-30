@@ -1,42 +1,45 @@
-const noBtn = document.getElementById("no");
-const yesBtn = document.getElementById("yes");
-const container = document.querySelector(".container");
-const success = document.getElementById("success");
-const playBtn = document.getElementById("playMusic");
-const iframe = document.getElementById("music");
+var noBtn = document.getElementById("no");
+var yesBtn = document.getElementById("yes");
+var container = document.querySelector(".container");
+var success = document.getElementById("success");
+var playBtn = document.getElementById("playMusic");
+var iframe = document.getElementById("music");
 
-/* MUZICĂ */
-playBtn.addEventListener("click", () => {
-  iframe.src =
-    "https://www.youtube.com/embed/E8i32NXMxnc?autoplay=1&playsinline=1&loop=1&playlist=E8i32NXMxnc";
+/* MUZICA */
+playBtn.onclick = function () {
+  iframe.src = "https://www.youtube.com/embed/E8i32NXMxnc?autoplay=1&loop=1";
   playBtn.style.display = "none";
-});
+};
 
 /* INIMIOARE */
 function createHeart() {
-  const heart = document.createElement("div");
+  var heart = document.createElement("div");
   heart.className = "heart";
-  heart.innerText = "❤️";
+  heart.innerText = "♥";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
   document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 6000);
+
+  setTimeout(function () {
+    document.body.removeChild(heart);
+  }, 6000);
 }
-setInterval(createHeart, 400);
+
+setInterval(createHeart, 500);
 
 /* BUTON NU */
-noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
+noBtn.onmouseenter = moveNo;
+noBtn.onclick = moveNo;
 
 function moveNo() {
-  const maxX = container.clientWidth - noBtn.offsetWidth;
-  const maxY = container.clientHeight - noBtn.offsetHeight;
+  var maxX = container.clientWidth - noBtn.offsetWidth;
+  var maxY = container.clientHeight - noBtn.offsetHeight;
   noBtn.style.left = Math.random() * maxX + "px";
   noBtn.style.top = Math.random() * maxY + "px";
 }
 
-/* DA */
-yesBtn.addEventListener("click", () => {
+/* BUTON DA */
+yesBtn.onclick = function () {
   container.style.display = "none";
   success.classList.remove("hidden");
-});
+};
