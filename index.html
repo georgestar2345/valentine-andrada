@@ -1,165 +1,36 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❤️ V-Day Surprise ❤️</title>
-
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-    background: linear-gradient(to bottom, #ffdde1, #ffb6c1); /* fundal roz romantic */
-  }
-
-  #container {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    top: 35%;
-  }
-
-  h1 {
-    font-size: 2.5em;
-    margin-bottom: 25px;
-    color: #ff4d6d;
-    text-shadow: 2px 2px 4px #00000033;
-  }
-
-  button {
-    padding: 15px 30px;
-    font-size: 1.2em;
-    cursor: pointer;
-    border: none;
-    border-radius: 12px;
-    background: #ff4d6d;
-    color: white;
-    margin: 0 10px;
-    transition: transform 0.2s;
-    position: relative;
-  }
-
-  button:hover {
-    transform: scale(1.1);
-  }
-
-  .heart-float {
-    position: absolute;
-    font-size: 20px;
-    color: #ff4d6d;
-    animation: floatUp linear infinite;
-    pointer-events: none;
-    opacity: 0.8;
-  }
-
-  @keyframes floatUp {
-    0% {transform: translateY(0) scale(1);}
-    100% {transform: translateY(-900px) scale(1.5);}
-  }
-
-  .confetti {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    opacity: 0.9;
-    pointer-events: none;
-    animation: confetti-fall 3s linear forwards;
-  }
-
-  @keyframes confetti-fall {
-    0% {transform: translateY(0) rotate(0deg);}
-    100% {transform: translateY(600px) rotate(720deg);}
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="container">
-  <h1>Will you be my Valentine?</h1>
-  <button id="daButton">DA</button>
-  <button id="nuButton">NU</button>
+<div class="container">
+  <h1>Mărunțelu Andrada Elisa</h1>
+  <p class="question">Vrei să fii Valentine-ul meu?</p>
+
+  <button id="playMusic">Porneste muzica</button>
+
+  <div class="buttons">
+    <button id="yes">DA</button>
+    <button id="no">NU</button>
+  </div>
 </div>
 
-<!-- Muzică royalty-free, înlocuiește cu Stray Kids dacă vrei -->
-<audio id="music" loop>
-  <source src="stray-romantic.mp3" type="audio/mpeg">
-  Browserul tău nu suportă audio.
-</audio>
+<div id="success" class="hidden">
+  <h2>Stiam eu ❤️</h2>
+</div>
 
-<script>
-const container = document.getElementById('container');
-const daButton = document.getElementById('daButton');
-const nuButton = document.getElementById('nuButton');
-const music = document.getElementById('music');
+<iframe
+  id="music"
+  width="1"
+  height="1"
+  style="opacity:0; position:absolute;"
+  allow="autoplay"
+></iframe>
 
-// inimioare fundal continuu
-function createBackgroundHeart() {
-  const heart = document.createElement('div');
-  heart.textContent = '❤️';
-  heart.className = 'heart-float';
-  heart.style.left = Math.random() * window.innerWidth + 'px';
-  heart.style.top = window.innerHeight + 'px';
-  heart.style.animationDuration = (6 + Math.random() * 4) + 's';
-  heart.style.fontSize = (16 + Math.random() * 24) + 'px';
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 10000);
-}
-setInterval(createBackgroundHeart, 400);
-
-// confetti funcție
-function createConfetti() {
-  for (let i = 0; i < 60; i++) {
-    const c = document.createElement('div');
-    c.className = 'confetti';
-    c.style.left = Math.random() * window.innerWidth + 'px';
-    c.style.backgroundColor = hsl(${Math.random()*360}, 100%, 50%);
-    c.style.animationDuration = (2 + Math.random() * 2) + 's';
-    document.body.appendChild(c);
-    setTimeout(() => c.remove(), 3000);
-  }
-}
-
-// inimioare la click
-function clickHeart(x, y) {
-  const heart = document.createElement('div');
-  heart.textContent = '❤️';
-  heart.className = 'heart-float';
-  heart.style.left = x + 'px';
-  heart.style.top = y + 'px';
-  heart.style.animationDuration = '2s';
-  heart.style.fontSize = '28px';
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 2000);
-}
-
-// DA button click
-daButton.addEventListener('click', () => {
-  music.play().catch(() => console.log("Trebuie click pe buton pentru muzică"));
-  createConfetti();
-  container.querySelector('h1').innerHTML = "Mă bucur că ai spus DA 💖<br>Te iubesc enorm de mult, Bambi ❤️";
-  daButton.style.display = 'none';
-  nuButton.style.display = 'none';
-});
-
-// inimioare la click oriunde
-document.addEventListener('click', (e) => {
-  if (e.target.id !== 'daButton' && e.target.id !== 'nuButton') {
-    clickHeart(e.clientX, e.clientY);
-  }
-});
-
-// NU button fuge când cursorul se apropie
-nuButton.addEventListener('mouseenter', () => {
-  const maxX = window.innerWidth - nuButton.offsetWidth;
-  const maxY = window.innerHeight - nuButton.offsetHeight;
-  nuButton.style.position = 'absolute';
-  nuButton.style.left = Math.random() * maxX + 'px';
-  nuButton.style.top = Math.random() * maxY + 'px';
-});
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
