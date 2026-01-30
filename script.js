@@ -7,7 +7,7 @@ var iframe = document.getElementById("music");
 
 /* MUZICA */
 playBtn.onclick = function () {
-  iframe.src = "https://www.youtube.com/embed/E8i32NXMxnc?autoplay=1&loop=1";
+ iframe.src = "https://www.youtube.com/embed/E8i32NXMxnc?autoplay=1&playsinline=1&controls=0&mute=0";
   playBtn.style.display = "none";
 };
 
